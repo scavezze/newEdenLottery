@@ -1,14 +1,16 @@
 <template name="header">
     <div id="header">
-        <ul class="pull-right">
+        <ul class="pull-right list-unstyled">
           {{> loginButtons}}
         </ul>
     </div>
     <div id="nav-menu">
         <ul class="nav nav-pills navbar-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li class="disabled"><a href="#">Admin</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            {{#if isInRole 'admin'}}
+                <li><a href="/admin">Admin</a></li>
+            {{/if}}
         </ul>
 
     </div>
