@@ -4,8 +4,9 @@
 </head>
 
 <template name="layout">
-    <div class="wrapper container">
-        <div id="main">
+    <div class="wrapper container col-lg-8">
+        {{>header}}
+        <div id="main" class="container">
           {{>yield}}
         </div>
     </div>
