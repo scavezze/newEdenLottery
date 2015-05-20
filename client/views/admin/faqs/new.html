@@ -1,0 +1,4 @@
+<template name="adminFaqsNew">
+    <h3>New</h3>
+    {{> quickForm id="newFaqsPost" collection="Faqs" fields="enabled,question,answer" type="method" meteormethod="addFaqs"}}
+</template>

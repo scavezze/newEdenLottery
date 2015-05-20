@@ -1,8 +1,15 @@
 <template name="faqs">
-    <div class="panel panel-default">
-        <!--<div class="panel-heading">Panel heading</div>-->
+    <h3>Frequently Asked Questions</h3>
+    {{#each faqs}}
+        {{> faqsItem}}
+    {{/each}}
+</template>
+
+<template name="faqsItem">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><strong>Q:</strong> {{ question }}</div>
         <div class="panel-body">
-           FAQS
+            {{{ answer }}}
         </div>
     </div>
 </template>

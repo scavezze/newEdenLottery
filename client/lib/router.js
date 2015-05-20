@@ -34,8 +34,12 @@ Router.map(function() {
         }
     });
 
-    this.route('faqs', {path: '/faq'});
-
+    this.route('faqs', {
+        path: '/faq',
+        waitOn: function () {
+            return Meteor.subscribe('faqs');
+        }
+    });
 
     //Admin section
     //NEWS =========================================
@@ -70,6 +74,41 @@ Router.map(function() {
         data: function(){
             var id = this.params.id;
             return News.findOne({_id: id});
+        }
+    });
+
+    //FAQS =========================================
+    this.route('adminFaqs', {
+        path: '/admin/faqs',
+        layoutTemplate: 'admin',
+        waitOn: function () {
+            // return one handle, a function, or an array
+            return Meteor.subscribe('faqs');
+        }
+    });
+    this.route('adminFaqsNew', {path: '/admin/faqs/new', layoutTemplate: 'admin'});
+    this.route('adminFaqsEdit', {
+        path: '/admin/faqs/edit/:id',
+        layoutTemplate: 'admin',
+        waitOn: function () {
+            // return one handle, a function, or an array
+            return Meteor.subscribe('faqs');
+        },
+        data: function(){
+            var id = this.params.id;
+            return {newPost: Faqs.findOne({_id: id})};
+        }
+    });
+    this.route('adminFaqsShow', {
+        path: '/admin/faqs/show/:id',
+        layoutTemplate: 'admin',
+        waitOn: function () {
+            // return one handle, a function, or an array
+            return Meteor.subscribe('faqs');
+        },
+        data: function(){
+            var id = this.params.id;
+            return Faqs.findOne({_id: id});
         }
     });
 
