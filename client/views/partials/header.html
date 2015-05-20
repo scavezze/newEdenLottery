@@ -6,10 +6,10 @@
     </div>
     <div id="nav-menu">
         <ul class="nav nav-pills navbar-right">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/faq">FAQ</a></li>
+            <li class="{{#if isCurrentPage 'home'}}active{{/if}}"><a href="{{pathFor 'home'}}">Home</a></li>
+            <li class="{{#if isCurrentPage 'faqs'}}active{{/if}}"><a href="{{pathFor 'faqs'}}">FAQ</a></li>
             {{#if isInRole 'admin'}}
-                <li><a href="/admin">Admin</a></li>
+                <li class="{{#if isCurrentPage 'adminNews'}}active{{/if}}"><a href="{{pathFor 'adminNews'}}">Admin</a></li>
             {{/if}}
         </ul>
 

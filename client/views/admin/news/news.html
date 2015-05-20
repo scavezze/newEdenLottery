@@ -1,0 +1,39 @@
+<template name="adminNews">
+    <div class="toolbar">
+        <div class="btn-group pull-right">
+            <a href="{{pathFor 'adminNewsNew'}}" class="btn btn-primary btn-xs">New</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Username</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each news}}
+            {{> newsRow}}
+        {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="newsRow">
+    <tr>
+        <td>{{ title }}</td>
+        <td>{{ truncateBody }}</td>
+        <td>{{ username }}</td>
+        <td><div class="btn-toolbar" role="toolbar">
+            <div class="btn-group" role="group">
+                <a href="{{pathFor 'adminNewsShow' id=this._id }}" class="btn btn-info btn-xs">Show</a>
+                <a href="{{pathFor 'adminNewsEdit' id=this._id }}" class="btn btn-primary btn-xs">Edit</a>
+                <a href="" class="btn btn-danger btn-xs delete">Delete</a>
+            </div>
+        </div></td>
+    </tr>
+</template>

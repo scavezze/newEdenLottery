@@ -9,7 +9,7 @@ Meteor.startup(function () {
         console.log('Creating users: ');
 
         var users = [
-            {name:"Admin User",email:"nate.scavezze@gmail.com",roles:['admin']}
+            {name:"Admin User",username:"admin",roles:['admin']}
         ];
 
         _.each(users, function (userData) {
@@ -18,7 +18,7 @@ Meteor.startup(function () {
             console.log(userData);
 
             id = Accounts.createUser({
-                email: userData.email,
+                username: userData.username,
                 password: "Goldsta12",
                 profile: { name: userData.name }
             });
@@ -31,20 +31,11 @@ Meteor.startup(function () {
         });
     }
 
+    Queue.changeMainInterval(15000); /*changes queue processing interval to 15sec (default 5 sec)*/
 
-
-    ////////////////////////////////////////////////////////////////////
-    // Prevent non-authorized users from creating new users
-    //
-
-    Accounts.validateNewUser(function (user) {
-        var loggedInUser = Meteor.user();
-
-        if (Roles.userIsInRole(loggedInUser, ['admin','manage-users'])) {
-            return true;
-        }
-
-        throw new Meteor.Error(403, "Not authorized to create new users");
-    });
+    /* set maintenance tasks */
+    Queue.setInterval('purgeLocks', 'Queue.purgeOldLocks', 60000); /* once a minute */
+    Queue.setInterval('purgeCompleted', 'Queue.purgeCompletedTasks()', 86400000); /* once a day */
+    Queue.setInterval('purgeLogs','Queue.purgeLogs()', 86400000); /* once a day */
 
 });

@@ -27,7 +27,7 @@
     "jumbotron"            : false,
     "thumbnails"           : false,
     "alerts"               : false,
-    "progress-bars"        : false,
+    "progress-bars"        : true,
     "media"                : false,
     "list-group"           : true,
     "panels"               : true,
@@ -36,7 +36,7 @@
     "close"                : false,
 
     "modals"               : false,
-    "tooltip"              : false,
+    "tooltip"              : true,
     "popovers"             : false,
     "carousel"             : false,
 

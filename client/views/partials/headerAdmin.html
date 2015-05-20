@@ -1,0 +1,17 @@
+<template name="headerAdmin">
+    <div id="header">
+        <ul class="pull-right list-unstyled">
+          {{> loginButtons}}
+        </ul>
+    </div>
+    <div class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="{{#if isCurrentPage 'home'}}active{{/if}}"><a href="{{pathFor 'home'}}">Home</a></li>
+                    <li class="{{#if isCurrentPage 'adminNews|adminNewsNew|adminNewsEdit|adminNewsShow'}}active{{/if}}"><a href="{{pathFor 'adminNews'}}">News</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

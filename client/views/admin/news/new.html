@@ -1,0 +1,4 @@
+<template name="adminNewsNew">
+    <h3>New</h3>
+    {{> quickForm id="newNewsPost" collection="News" fields="title,body" type="method" meteormethod="addNews"}}
+</template>
