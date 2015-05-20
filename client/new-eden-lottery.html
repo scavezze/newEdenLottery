@@ -1,8 +1,14 @@
 <template name="home">
+    {{#each news}}
+        {{> newsItem}}
+    {{/each}}
+</template>
+
+<template name="newsItem">
     <div class="panel panel-default">
-        <!--<div class="panel-heading">Panel heading</div>-->
+        <div class="panel-heading">{{ title }}</div>
         <div class="panel-body">
-          Coming Soon.
+            {{{ body }}}
         </div>
     </div>
 </template>

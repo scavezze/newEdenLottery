@@ -1,4 +1,13 @@
 Meteor.publish("news", function () {
-    //Meteor._sleepForMs(2000);
-    return News.find();
+    if(this.userId) {
+        var loggedInUser = Meteor.users.findOne(this.userId);
+
+        if (Roles.userIsInRole(loggedInUser, ['admin'])) {
+            return News.find();
+        } else {
+            return News.find({enabled: true});
+        }
+    } else {
+        return News.find({enabled: true});
+    }
 });

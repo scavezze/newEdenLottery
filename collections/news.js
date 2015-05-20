@@ -3,6 +3,11 @@
  */
 News = new Mongo.Collection("news");
 News.attachSchema(new SimpleSchema({
+    enabled: {
+        type: Boolean,
+        label: "Enabled",
+        defaultValue: false
+    },
     title: {
         type: String,
         label: "Title",
