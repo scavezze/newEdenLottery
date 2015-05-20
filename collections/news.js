@@ -54,6 +54,7 @@ Meteor.methods({
         check(news, News.simpleSchema())
 
         News.insert({
+            enabled: news.enabled,
             title: news.title,
             body: news.body,
             createdAt: new Date(),
