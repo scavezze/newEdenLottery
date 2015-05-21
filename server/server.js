@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-
+    WALLET_UPDATE_DELAY = 60000
     ////////////////////////////////////////////////////////////////////
     // Create Admin Users
     //
@@ -31,11 +31,17 @@ Meteor.startup(function () {
         });
     }
 
-    Queue.changeMainInterval(15000); /*changes queue processing interval to 15sec (default 5 sec)*/
+    eveonlinejs = Meteor.npmRequire('eveonlinejs');
+    eveonlinejs.setParams({
+        keyID: '1865894',
+        vCode: '4vD9oIUSzMOHOiqfwavbNFcVpdpV93MzKefdeWujuZJKZ5dQEr0GU1ohTMOsFf9S'
+    });
 
-    /* set maintenance tasks */
-    Queue.setInterval('purgeLocks', 'Queue.purgeOldLocks', 60000); /* once a minute */
-    Queue.setInterval('purgeCompleted', 'Queue.purgeCompletedTasks()', 86400000); /* once a day */
-    Queue.setInterval('purgeLogs','Queue.purgeLogs()', 86400000); /* once a day */
+    Cue.start()
 
+    //Define jobs
+    Cue.addJob('updateWallet', {retryOnError:true, maxMs:60000, maxAtOnce:1}, updateWallet);
+
+    //Seed task on startup
+    Cue.addTask('updateWallet', {isAsync:false, unique:false, delay:WALLET_UPDATE_DELAY}, {});
 });
