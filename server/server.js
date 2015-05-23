@@ -50,8 +50,8 @@ Meteor.startup(function () {
     Cue.start()
 
     //Define jobs
-    Cue.addJob('updateWallet', {retryOnError:true, maxMs:60000, maxAtOnce:1}, updateWallet);
-    Cue.addJob('updateLotteries', {retryOnError:true, maxMs:60000, maxAtOnce:1}, updateLotteries);
+    Cue.addJob('updateWallet', {retryOnError:true, maxMs:300000, maxAtOnce:1}, updateWallet);
+    Cue.addJob('updateLotteries', {retryOnError:true, maxMs:300000, maxAtOnce:1}, updateLotteries);
 
     if(CueTasks.find().fetch().length === 0) {
         //Seed task on startup
