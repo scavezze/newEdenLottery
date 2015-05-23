@@ -4,5 +4,8 @@ Template.home.helpers({
     },
     lotteries: function(){
         return Lotteries.find({active: true});
+    },
+    winners: function(){
+        return LotteryTickets.find({winner: true}, {sort: {createdAt: -1}, limit: 5});
     }
 });

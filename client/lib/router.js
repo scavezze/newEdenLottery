@@ -31,7 +31,8 @@ Router.map(function() {
         path: '/',
         waitOn: function () {
             return [Meteor.subscribe('news'),
-                    Meteor.subscribe('lotteries')];
+                    Meteor.subscribe('lotteries'),
+                    Meteor.subscribe('topFiveWInners')];
         }
     });
 

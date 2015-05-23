@@ -5,6 +5,17 @@
         {{/each}}
     </div>
 
+    <div class="winner-area">
+        <ul class="list-group top-five-winners">
+            <li class="list-group-item active">
+                <h5>Last 5 Winner</h5>
+            </li>
+            {{#each winners}}
+                {{> winner}}
+            {{/each}}
+        </ul>
+    </div>
+
     <div class="news-area">
         {{#each news}}
             {{> newsItem}}

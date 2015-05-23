@@ -7,3 +7,19 @@ Meteor.publish("lotteryTickets", function () {
         }
     }
 });
+
+Meteor.publish('topFiveWInners', function() {
+    Meteor.publishWithRelations({
+        handle: this,
+        collection: LotteryTickets,
+        filter: { winner: true },
+        options: {
+            limit: 5,
+            sort: { createdAt: -1 }
+        },
+        mappings: [{
+            key: 'lotteryID',
+            collection: Lotteries
+        }]
+    });
+});
