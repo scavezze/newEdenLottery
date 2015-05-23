@@ -49,7 +49,7 @@ updateLotteries = function(task, done) {
                 lottery.active = false;
                 lottery.endedAt = new Date();
 
-                var newLottery = Lotteries.getNewLottery(lottery.cap, lottery.ticketCost, lottery.identifier);
+                var newLottery = Lotteries.getNewLottery(lottery.cap, lottery.ticketCost, lottery.identifier, lottery.description);
                 Lotteries.insert(newLottery);
             }
             Lotteries.update(lottery._id, {$set: lottery});

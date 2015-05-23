@@ -31,10 +31,10 @@ Meteor.startup(function () {
     }
 
     if(Lotteries.find().fetch().length === 0) {
-        var lottery = Lotteries.getNewLottery(10000000, 500000, "reg");
+        var lottery = Lotteries.getNewLottery(10000000, 500000, "reg", "Small Lottery for Poor Pilots");
         Lotteries.insert(lottery);
 
-        lottery = Lotteries.getNewLottery(100000000, 5000000, "big");
+        lottery = Lotteries.getNewLottery(100000000, 5000000, "big", "Big Money, High Roller");
         Lotteries.insert(lottery);
     }
 

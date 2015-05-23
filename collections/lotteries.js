@@ -60,11 +60,11 @@ Lotteries.attachSchema(new SimpleSchema({
         defaultValue: new Date()
     }
 }));
-Lotteries.getNewLottery = function(cap, cost, ident) {
+Lotteries.getNewLottery = function(cap, cost, ident, description) {
     return {
         active: true,
         cap: cap,
-        description: "Lottery #" + Lotteries.find().fetch().length,
+        description: description,
         sum: 0,
         profit: 0,
         ticketCost: cost,
