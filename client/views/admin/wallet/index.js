@@ -3,7 +3,7 @@
  */
 Template.adminWallet.helpers({
     walletEntries: function () {
-        return WalletTransactions.find({},{sort: {createdAt: -1}})
+        return WalletTransactions.find({},{sort: {refID: -1}})
     }
 });
 
