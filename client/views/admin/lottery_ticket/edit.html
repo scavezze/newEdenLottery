@@ -1,0 +1,4 @@
+<template name="adminLotteryTicketEdit">
+    <h3>Edit</h3>
+    {{> quickForm id="updateLotteryTicket" collection="LotteryTickets" omitFields="createdAt" type="method-update" meteormethod="updateLotteryTicket" doc=lotteryTicket}}
+</template>

@@ -1,0 +1,28 @@
+<template name="lottery">
+    <ul class="list-group current-lottery">
+        <li class="list-group-item">
+            <p>
+                Current Total:
+                    <span class="current-lotto-info">
+                      {{ formatAsIsk sum }}
+                    </span>
+            </p>
+        </li>
+        <li class="list-group-item">
+            <p>
+                Winner Picked @:
+                    <span class="current-lotto-info">
+                      {{ formatAsIsk cap }}
+                    </span>
+            </p>
+        </li>
+        <li class="list-group-item">
+            <p>
+                Ticket Cost
+                    <span class="current-lotto-info">
+                      {{ formatAsIsk ticketCost }}
+                    </span>
+            </p>
+        </li>
+    </ul>
+</template>

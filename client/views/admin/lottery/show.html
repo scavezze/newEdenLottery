@@ -1,0 +1,53 @@
+<template name="adminLotteryShow">
+    <h3>Show</h3>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th width="150">Label</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Active</td>
+            <td>{{ active }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ description }}</td>
+        </tr>
+        <tr>
+            <td>Identifier</td>
+            <td>{{ identifier }}</td>
+        </tr>
+        <tr>
+            <td>Ended At</td>
+            <td>{{ endedAt }}</td>
+        </tr>
+        <tr>
+            <td>Cap</td>
+            <td>{{ cap }}</td>
+        </tr>
+        <tr>
+            <td>Sum</td>
+            <td>{{ sum }}</td>
+        </tr>
+        <tr>
+            <td>Profit</td>
+            <td>{{ profit }}</td>
+        </tr>
+        <tr>
+            <td>Ticket Cost</td>
+            <td>{{ ticketCost }}</td>
+        </tr>
+        <tr>
+            <td>Next Available Ticket</td>
+            <td>{{ nextAvailTicket }}</td>
+        </tr>
+        <tr>
+            <td>Created At</td>
+            <td>{{ createdAt }}</td>
+        </tr>
+        </tbody>
+    </table>
+</template>

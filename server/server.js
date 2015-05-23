@@ -1,5 +1,4 @@
 Meteor.startup(function () {
-    WALLET_UPDATE_DELAY = 60000
     ////////////////////////////////////////////////////////////////////
     // Create Admin Users
     //
@@ -31,17 +30,31 @@ Meteor.startup(function () {
         });
     }
 
+    if(Lotteries.find().fetch().length === 0) {
+        var lottery = Lotteries.getNewLottery(10000000, 500000, "reg");
+        Lotteries.insert(lottery);
+
+        lottery = Lotteries.getNewLottery(100000000, 5000000, "big");
+        Lotteries.insert(lottery);
+    }
+
     eveonlinejs = Meteor.npmRequire('eveonlinejs');
     eveonlinejs.setParams({
         keyID: '1865894',
         vCode: '4vD9oIUSzMOHOiqfwavbNFcVpdpV93MzKefdeWujuZJKZ5dQEr0GU1ohTMOsFf9S'
     });
 
+    var runJobs = new Date();
+    runJobs.setMinutes(runJobs.getMinutes() + 1);
+
     Cue.start()
 
     //Define jobs
     Cue.addJob('updateWallet', {retryOnError:true, maxMs:60000, maxAtOnce:1}, updateWallet);
+    Cue.addJob('updateLotteries', {retryOnError:true, maxMs:60000, maxAtOnce:1}, updateLotteries);
 
-    //Seed task on startup
-    Cue.addTask('updateWallet', {isAsync:false, unique:false, delay:WALLET_UPDATE_DELAY}, {});
+    if(CueTasks.find().fetch().length === 0) {
+        //Seed task on startup
+        Cue.addTask('updateWallet', {isAsync: false, unique: false, delayUntil: runJobs}, {});
+    }
 });

@@ -1,0 +1,37 @@
+<template name="adminLotteryTicketShow">
+    <h3>Show</h3>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th width="150">Label</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Winner</td>
+            <td>{{ winnerString }}</td>
+        </tr>
+        <tr>
+            <td>Character Name</td>
+            <td>{{ characterName }}</td>
+        </tr>
+        <tr>
+            <td>Lottery ID</td>
+            <td>{{ lotteryID }}</td>
+        </tr>
+        <tr>
+            <td>Start Range</td>
+            <td>{{ startRange }}</td>
+        </tr>
+        <tr>
+            <td>End Range</td>
+            <td>{{ endRange }}</td>
+        </tr>
+        <tr>
+            <td>Created At</td>
+            <td>{{ createdAt }}</td>
+        </tr>
+        </tbody>
+    </table>
+</template>

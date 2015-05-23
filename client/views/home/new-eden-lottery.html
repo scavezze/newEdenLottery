@@ -1,7 +1,15 @@
 <template name="home">
-    {{#each news}}
-        {{> newsItem}}
-    {{/each}}
+    <div class="lottery-area">
+        {{#each lotteries}}
+            {{> lottery}}
+        {{/each}}
+    </div>
+
+    <div class="news-area">
+        {{#each news}}
+            {{> newsItem}}
+        {{/each}}
+    </div>
 </template>
 
 <template name="newsItem">
