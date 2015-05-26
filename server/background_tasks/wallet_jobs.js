@@ -11,12 +11,14 @@ updateWallet = function(task, done) {
         var response = Async.runSync(function (finished) {
             eveonlinejs.fetch('corp:WalletJournal', options, function (err, result) {
 
-                if (response.error) {
+                if (err) {
                     var runJobs = new Date();
                     runJobs.setMinutes(runJobs.getMinutes() + 15);
 
                     Cue.addTask('updateWallet', {isAsync: false, unique: false, delayUntil: runJobs}, {});
                     done();
+
+                    throw err;
                 }
 
                 var walletEntries = [];
