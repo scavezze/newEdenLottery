@@ -19,8 +19,8 @@ meteorhacks:npm
 
 
 npm-container
-danimal:cue
 mrt:moment
 reactive-var
 risul:accounting
 publish-with-relations
+danimal:cue
