@@ -11,7 +11,7 @@ Template.faqsItemHeader.events({
     'click .question-jump-to':function(e,tmpl) {
         e.preventDefault();
         $('html, body').animate({
-            scrollTop: $("question-" + tmpl.data._id).offset().top
+            scrollTop: $("#question-" + tmpl.data._id).offset().top
         }, 600);
     }
 });
