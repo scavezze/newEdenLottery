@@ -1,8 +1,22 @@
 <template name="faqs">
     <h3>Frequently Asked Questions</h3>
+    <div class="panel panel-info faq-header">
+        <div class="panel-body">
+            <ul class="list-unstyled">
+                {{#each faqs}}
+                    {{> faqsItemHeader}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
     {{#each faqs}}
         {{> faqsItem}}
     {{/each}}
+</template>
+
+<template name="faqsItemHeader">
+    <li><strong>Q:</strong><a href="#{{ _id }}">{{ question }}</a></li>
 </template>
 
 <template name="faqsItem">
@@ -10,6 +24,7 @@
         <div class="panel-heading"><strong>Q:</strong> {{ question }}</div>
         <div class="panel-body">
             {{{ answer }}}
+            <p><a name="{{ _id }}">Back To Top</a></p>
         </div>
     </div>
 </template>
