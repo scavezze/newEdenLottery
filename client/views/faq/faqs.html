@@ -16,15 +16,14 @@
 </template>
 
 <template name="faqsItemHeader">
-    <li><strong>Q:</strong><a href="#{{ _id }}">{{ question }}</a></li>
+    <li><strong>Q: </strong><a id="question_{{ _id }}" class="question-jump-to" href="">{{ question }}</a></li>
 </template>
 
 <template name="faqsItem">
-    <div class="panel panel-primary">
-        <div class="panel-heading"><strong>Q:</strong> {{ question }}</div>
+    <div id="question-{{ _id }}" class="panel panel-primary">
+        <div class="panel-heading"><strong>Q: </strong> {{ question }}</div>
         <div class="panel-body">
             {{{ answer }}}
-            <p><a name="{{ _id }}">Back To Top</a></p>
         </div>
     </div>
 </template>
