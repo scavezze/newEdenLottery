@@ -19,7 +19,7 @@ updateLotteries = function(task, done) {
                 for (var walletEntry in walletTransactions) {
                     var wt = walletTransactions[walletEntry];
                     if (wt.refTypeID === "10") {
-                        if (wt.reason.replace("DESC: ", "").trim() === lottery.identifier) {
+                        if (wt.reason.replace("DESC: ", "").trim().toLowerCase() === lottery.identifier.toLowerCase()) {
                             var ticket = {
                                 characterName: wt.ownerName1,
                                 lotteryID: lottery._id,
